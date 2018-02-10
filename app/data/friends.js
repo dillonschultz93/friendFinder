@@ -1,6 +1,6 @@
 // file that contains an array of objects that represent people and their 
 // responses to the questions being asked on servey.html
-
+ 
 let users = [
   {
     name: 'John Doe', 

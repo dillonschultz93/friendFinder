@@ -169,9 +169,9 @@
         </form>
       </div>
     </div>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    <a href="/api/compatibility" id="submit" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
       See your match
-    </button>
+    </a>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
@@ -207,6 +207,39 @@
     $(document).ready(function() {
       $("#myModal").on('click', modal());
     });
+  </script>
+  <script type="text/javascript">
+    
+    $('#submit').on('click', function(event){
+      event.preventDefault()
+            
+      let newUser = {
+        name: $('#name').val().trim(),
+        photo: $('#photo').val().trim(),
+        scores: [
+          $('#question-1').val(),
+          $('#question-2').val(),
+          $('#question-3').val(),
+          $('#question-4').val(),
+          $('#question-5').val(),
+          $('#question-6').val(),
+          $('#question-7').val(),
+          $('#question-8').val(),
+          $('#question-9').val(),
+          $('#question-10').val()
+        ]
+      }
+      
+      $.post('/api/friends/', newUser, function(response){
+
+      })
+      
+      $.get('/api/friends/', function(data){
+        if(data){
+          $('#match-name').text(data.friendName)
+        }
+      })
+    })
   </script>
 </body>
 </html>
